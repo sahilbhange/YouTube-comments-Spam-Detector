@@ -1,0 +1,36 @@
+Download a YouTube spam collection dataset available from below link:
+(http://archive.ics.uci.edu/ml/machine-learning-databases/00380/YouTube-Spam-Collection-v1.zip)
+
+Data set attributes: 
+COMMENT_ID: Unique id representing the comment, 
+AUTHOR: Author id, 
+DATE: Date the comment is posted, 
+CONTENT: The comment, 
+TAG: For spam 1, else 0
+
+Approach:
+1. Create single training data set file using the 4 of 5 YouTube data files.
+2. Since the data set is text data, need to obtain the features from the comment(CONTENT) field.
+3. From the data set only "CONTENT" field in the file is relevant to obtain the features.
+4. Remove the unnecessary special characters (ï»¿) from the comment field.
+5. Create SPAM dictionary of words which usually appear in Spam messages by observing Spam class samples.
+6. Count the number of spam words in the comment using the spam dictionary
+7. To check if the comment contains strings "http","www" or ".com" 
+string which represent promotions and could be SPAM and set IS_HTTP=1 else 0
+8. To calculate the ratio of Spam words to number of words in comment, 
+first remove the English ‘STOPWORDS’ like (I,me,the,etc) from the comment field.
+9. Get the length of the comment as long length comments are usually spam comments
+9. Count the number of words from the comment after removing the stopwords.
+10. Calculate the ratio of Spam words and total number of words in comment.
+11. Execute the Naïve Bayes classifier on test data and validate it with the test data
+
+
+New Features:
+
+ SPM_CNT --> Spam words count in the comment
+ IS_URL --> Flag to get identify high probability spam words
+ COMMENT_LEN -- > Length of a comment on a YouTube video
+ spm_len --> Total number of spam words in comment
+ SPM_to_COMNT --> Ratio of number of spam words in comments to number of words in comments
+
+The derived features will be used in Machine Learning algorithm to indentify the Spam comments on the YouTube.
